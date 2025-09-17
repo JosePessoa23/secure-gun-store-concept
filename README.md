@@ -82,7 +82,7 @@ This project aims to develop a secure online platform for the purchase and sale 
 
 To design an effective pipeline for our application, we followed a simple yet adaptable approach, so we can change it as the project goes on.
 
-![Apply_License](Docs/pipeline/pipeline.svg)
+![Apply_License](documentation/Docs/pipeline/pipeline.svg)
 
 ## Technologies Used
 
@@ -98,44 +98,6 @@ The backend of the system will be powered by **Node.js**, a powerful JavaScript 
 
 **MongoDB** will be used as the database management system for storing and managing the system's data. MongoDB is a document-oriented NoSQL database that offers flexibility, scalability, and high performance. Its schema-less design allows for the storage of complex data structures, making it suitable for handling diverse data types such as user profiles, weapon details, and purchase history. MongoDB's distributed architecture also ensures reliability and fault tolerance, crucial for the robust operation of our arms trading system.
 
-## Assignment of tasks
-
-### Team Members
-
-The teams consists of students identified in the following table.
-
-| Student Number	| Name |
-|--------------|----------------------------|
-| **1201000**  | Bruno Ribeiro          |
-| **1201001**  | Carlos Rodrigues          |
-| **1201007**  | José Pessoa          |
-| **1201115**  | Miguel Almeida        |
-| **1220273**  | Pedro Vilela         |
-
-
-
-### Task Distribution 
-
-
-Throughout the project's development period, the distribution of _tasks / requirements / features_ by the team members was carried out as described in the following table.
-
-
-| Task                   | Phase 1 | Phase 2: Sprint 1 | Phase 2: Sprint 2 |
-|------------------------|:-------:|:-----------------:|:-----------------:|
-| Use Case Diagram (UCD) |   all   |        all        |        all        |
-| Domain Model           |   all   |        all        |        all        |
-| US 01                  | 1220273 |                   |                   |
-| US 02                  | 1201000 |                   |                   |
-| US 03                  | 1201000 |                   |                   |
-| US 04                  | 1201000 |                   |                   |
-| US 05                  | 1201001 |                   |                   |
-| US 06                  | 1201001 |                   |                   |
-| US 07                  | 1201115 |                   |                   |
-| US 08                  | 1201115 |                   |                   |
-| US 09                  | 1201007 |                   |                   |
-| US 10                  | 1201007 |                   |                   |
-| US 11                  | 1201007 |                   |                   |
-| US 12                  | 1201115 |                   |                   |
 
 ## Conclusion
 
