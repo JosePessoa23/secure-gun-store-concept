@@ -1,0 +1,103 @@
+@startuml
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam participant {
+BackgroundColor AWS_BG_COLOR
+BorderColor AWS_BORDER_COLOR
+}
+
+skinparam sequence {
+LifeLineBorderColor DodgerBlue
+LifeLineBackgroundColor APPLICATION
+
+ActorBackgroundColor APPLICATION
+ActorBorderColor DodgerBlue
+
+BackgroundColor #FFFFFF
+ArrowColor DodgerBlue
+BorderColor DodgerBlue
+ParticipantBorderColor DodgerBlue
+
+GroupBorderColor #082642
+GroupBackgroundColor APPLICATION
+}
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 01 - Reset password
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+actor "<b>Client" as A
+
+participant "<b>LoginPage" as LP
+participant "<b>ResetPasswordPage" as RPP
+participant "<b>ResetPasswordService" as RPS
+participant "<b>BackEnd" as BE
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> LP: Press the "Rest Password" button/link
+activate LP
+
+LP -> A: Display the form to indicate the email
+deactivate LP
+
+A -> LP: Fills in the email and submits the form
+activate LP
+
+LP -> RPS: startResetPasswordProcess(formData)
+
+activate RPS
+RPS --> BE : HTTP POST: "/reset-password-email" (email)
+
+activate BE
+BE --> RPS : confirmation of the request
+deactivate BE
+
+RPS --> LP : confirmation of operation
+deactivate RPS
+
+LP -> A: Displays a success message
+deactivate LP
+
+A -> A: Check the reset password email \n and press the reset password link
+
+A -> RPP: Access the reset password page
+
+activate RPP
+RPP -> A: Display the form to reset the password
+deactivate RPP
+
+A -> RPP: Fills in the form (email, new_password, new_password_confirmation \n authentication_app_code) and submits
+
+activate RPP
+RPP -> RPS: resetPassword(formData)
+
+activate RPS
+
+RPS -> BE: HTTP POST: "/reset-password" (token, email, new_password, new_password_confirmation, authentication_app_code)
+
+activate BE
+BE --> RPS : confirmation of the request
+deactivate BE
+
+RPS --> RPP : confirmation of operation
+deactivate RPS
+
+RPP -> A: Displays a success message
+deactivate RPP
+
+
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

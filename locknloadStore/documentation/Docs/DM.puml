@@ -1,0 +1,110 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide methods
+skinparam classAttributeIconSize 0
+
+
+package Licenses{
+class License{
+-licenseID
+-licenseNumber
+-name
+-email
+-birthDate
+-address
+-expiryDate
+}
+class LicenseApplication{
+-name
+-email
+-birthDate
+-address
+-medicalCertificate
+-documentID
+}
+enum ApplicationStatus{
+-pending
+-approved
+-denied
+}
+}
+
+package Users{
+class User{
+-userID
+-name
+-email
+-recoveryCodes
+-2FAEnabled
+}
+
+class Password{
+-password
+-createdAt
+-deletedAt
+}
+
+class PasswordResetToken{
+-token
+-expiresAt
+}
+
+class Client{
+-birthDate
+-phoneNumber
+-address
+}
+
+class Admin{
+}
+
+class ERCA{
+}
+}
+
+package Weapons{
+class Weapon{
+-weaponID
+-name
+-price
+-description
+-image
+}
+}
+
+package Orders{
+class Order{
+-orderID
+-date
+-orderNumber
+-paymentMethod
+-totalPrice
+-shippingMethod
+-clientID
+}
+enum OrderStatus{
+-pending
+-delivering
+-delivered
+-cancelled
+}
+}
+
+User <|-- Client
+User <|-- Admin
+User <|-- ERCA
+User "1" -->"*" Password : has >
+User "1" -->"*" PasswordResetToken : has >
+Client "1"-->"*" Order : performs >
+Client "1"-->"1" License : has >
+Client "1"-->"1" LicenseApplication : apply >
+Client "1"-->"*" Weapon : adds to shopping cart >
+ERCA "1" -->"*" LicenseApplication : approves >
+LicenseApplication "1" --> "1" ApplicationStatus: has >
+ERCA "1" -->"*" License : gives >
+Order "1"-->"*" Weapon : has >
+Order "1" --> "1" OrderStatus: has >
+Admin "1" -->"*" Weapon : adds >
+Admin "1" -->"*" Client : manages >
+
+@enduml

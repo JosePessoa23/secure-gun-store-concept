@@ -1,0 +1,22 @@
+.check_status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 5rem;
+  }
+  
+  .check_status h1 {
+    white-space: nowrap;
+    font-size: 2rem;
+    font-family: 'Monaco', monospace;
+  }
+  
+  .check_status label {
+    margin-top: 2rem;
+  }

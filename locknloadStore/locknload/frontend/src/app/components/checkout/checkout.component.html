@@ -1,0 +1,70 @@
+<div class="container d-flex flex-column p-5 gap-5">
+  <div class="d-flex flex-column gap-5">
+    <span class="w-100 display-3 fw-bold text-primary">Checkout</span>
+
+    <form [formGroup]="checkoutForm" (ngSubmit)="checkout()" data-mode="onLight">
+      <div class="d-flex flex-column gap-3 align-items-start">
+        <div class="d-flex flex-column gap-3 align-items-start w-100">
+          <tui-input class="w-50" formControlName="name">
+            Order Recipient Name
+            <input placeholder="Field placeholder" tuiTextfield />
+            <span class="tui-required"></span>
+          </tui-input>
+        </div>
+        <div class="d-flex flex-column gap-3 align-items-start w-100">
+          <tui-input class="w-50" formControlName="shippingAddress">
+            Destination Address
+            <input placeholder="Field placeholder" tuiTextfield />
+            <span class="tui-required"></span>
+          </tui-input>
+        </div>
+
+        <div class="d-flex flex-column gap-3 align-items-start w-100">
+          <tui-input class="w-50" formControlName="email">
+            Email
+            <input placeholder="Field placeholder" tuiTextfield />
+            <span class="tui-required"></span>
+          </tui-input>
+        </div>
+
+        <label tuiLabel="Payment Method" class="w-50">
+          <tui-select formControlName="paymentMethod" class="accounts-select" [tuiTextfieldLabelOutside]="true"
+            [valueContent]="paymentContent">
+            Choose an account
+            <tui-data-list-wrapper *tuiDataList [itemContent]="paymentContent"
+              [items]="payment"></tui-data-list-wrapper>
+          </tui-select>
+        </label>
+
+        <label tuiLabel="Shipping Method" class="w-50">
+          <tui-select formControlName="shippingMethod" class="accounts-select" [tuiTextfieldLabelOutside]="true"
+            [valueContent]="shippingContent">
+            Choose an account
+            <tui-data-list-wrapper *tuiDataList [itemContent]="shippingContent"
+              [items]="shipping"></tui-data-list-wrapper>
+          </tui-select>
+        </label>
+
+        <tui-checkbox-labeled formControlName="dataConsent">
+          <b>Data Consent</b>
+          <div class="example">Do you agree to share your data with us?</div>
+        </tui-checkbox-labeled>
+
+        <button [disabled]="!checkoutForm.valid" class="w-25 rounded-pill" tuiButton type="submit">Submit</button>
+      </div>
+      <ng-template #paymentContent let-payment>
+        <img style="height: 2rem;" [src]="payment.image" class="tui-space_right-2" />
+        <span class="payment">
+          {{ payment.name }}
+        </span>
+      </ng-template>
+      <ng-template #shippingContent let-shipping>
+        <img style="height: 2rem;" [src]="shipping.image" class="tui-space_right-2" />
+        <span class="shipping">
+          {{ shipping.name }}
+        </span>
+      </ng-template>
+    </form>
+
+  </div>
+</div>

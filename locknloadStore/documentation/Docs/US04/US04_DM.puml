@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide methods
+skinparam classAttributeIconSize 0
+
+
+
+
+package Users{
+class ERCA{
+-clientID
+-name
+-email
+-password
+}
+
+}
+
+package Licenses{
+class License{
+-licenseID
+-licenseNumber
+-name
+-email
+-birthDate
+-address
+-expiryDate
+-licenseType
+}
+class LicenseApplication{
+-name
+-email
+-birthDate
+-address
+-medicalCertificate
+-documentID
+}
+enum ApplicationStatus{
+-pending
+-approved
+-denied
+}
+}
+
+
+ERCA "1"-->"*" License : gives >
+ERCA "1"-->"*" LicenseApplication : approve >
+LicenseApplication "1" --> "1" ApplicationStatus: has >
+
+@enduml

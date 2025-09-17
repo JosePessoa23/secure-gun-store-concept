@@ -1,0 +1,74 @@
+@startuml
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam participant {
+    BackgroundColor AWS_BG_COLOR
+    BorderColor AWS_BORDER_COLOR
+}
+
+skinparam sequence {
+    LifeLineBorderColor DodgerBlue
+    LifeLineBackgroundColor APPLICATION
+
+    ActorBackgroundColor APPLICATION
+    ActorBorderColor DodgerBlue
+
+    BackgroundColor #FFFFFF
+    ArrowColor DodgerBlue
+    BorderColor DodgerBlue
+    ParticipantBorderColor DodgerBlue
+
+    GroupBorderColor #082642
+    GroupBackgroundColor APPLICATION
+}
+
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 02 - Apply to a license
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+
+actor "<b>Client" as A
+participant "<b>LicenseApplicationPage" as CR
+participant "<b>LicenseApplicationService" as CC
+participant "<b>BackEnd" as BE
+
+
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> CR: Asks to apply for a license
+activate CR
+CR -> A: Requests the documentation and data
+A -> CR: Upload documents and insert data
+
+CR -> CC: licenseApply(name, birthdate, address, email, medicalCertificate, documentID)
+activate CC
+
+
+
+CC -> BE: HTTP request (POST)
+activate BE
+BE --> CC : success/failure of the application
+deactivate BE
+
+
+
+CC-->CR : success/failure of the application
+deactivate CC
+CR -> A: Informs the success/failure of the application
+deactivate CR
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

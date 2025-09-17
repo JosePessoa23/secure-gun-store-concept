@@ -1,0 +1,104 @@
+@startuml hello
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam sequence {
+    LifeLineBorderColor DodgerBlue
+    LifeLineBackgroundColor APPLICATION
+
+    ActorBackgroundColor APPLICATION
+    ActorBorderColor DodgerBlue
+
+    BackgroundColor #FFFFFF
+    ArrowColor DodgerBlue
+    BorderColor DodgerBlue
+
+    ParticipantBackgroundColor DodgerBlue
+    ParticipantFontColor #FFFFFF
+    ParticipantBorderColor DodgerBlue
+
+    GroupBorderColor #082642
+    GroupBackgroundColor APPLICATION
+}
+
+skinparam note {
+    LifeLineBorderColor DodgerBlue
+    LifeLineBackgroundColor APPLICATION
+
+    ActorBackgroundColor APPLICATION
+    ActorBorderColor DodgerBlue
+
+    BackgroundColor #FFFFFF
+    ArrowColor DodgerBlue
+    BorderColor DodgerBlue
+
+    ParticipantBackgroundColor DodgerBlue
+    ParticipantFontColor #FFFFFF
+    ParticipantBorderColor DodgerBlue
+
+    GroupBorderColor #082642
+    GroupBackgroundColor APPLICATION
+}
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 02 - Apply to a license
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+actor "<b>Client" as A
+participant "<b>:LicenseApplicationRoute" as RR
+participant "<b>:LicenseApplicationController" as CC
+participant "<b>:LicenseApplicationMapper" as CM
+participant "<b>:LicenseApplicationService" as CS
+participant "<b>licenseApplication\n<b>:LicenseApplication" as C
+participant "<b>licenseApplicationDTO\n<b>:LicenseApplicationDTO" as CD
+participant "<b>:LicenseApplicationRepository" as CREP
+participant "<b>:LicenseApplicationSchema" as CSC
+
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> RR: HTTP request (post)
+activate RR
+
+RR -> CC: create(req, res, next)
+activate CC
+
+CC -> CM: licenseApplicationDTO = createLicenseApplicationDTO(name, birthdate, address, email, medicalCertificate, documentID)
+activate CM
+CM -> CD** : create()
+deactivate CM
+CC -> CS : createLicenseApplication(licenceApplicationDTO)
+activate CS
+CS -> C** : licenseApplication = create()
+CS -> CREP : save(licenseApplication)
+activate CREP
+CREP -> CSC : save(licenceApplication)
+activate CSC
+deactivate CSC
+deactivate CREP
+CS -> CM : licenceApplicationDTO = createLicenceApplicationDTO(licenceApplication)
+activate CM
+CM -> CD : create()
+activate CD
+deactivate CD
+deactivate CM
+CS -> CC : licenceApplicationDTO
+deactivate CS
+CC -> RR: licenceApplicationDTO
+deactivate CC
+
+RR -> A: licenceApplicationDTO
+deactivate RR
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

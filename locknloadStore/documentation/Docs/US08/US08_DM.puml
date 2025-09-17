@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide methods
+skinparam classAttributeIconSize 0
+
+package Users {
+class Client {
+-clientID
+-name
+-email
+-password
+-birthDate
+-phoneNumber
+-address
+}
+}
+
+package Orders {
+class Order {
+-orderID
+-date
+-orderNumber
+-paymentMethod
+-totalPrice
+-shippingMethod
+-clientID
+}
+enum OrderStatus {
+-pending
+-delivering
+-delivered
+-cancelled
+}
+}
+
+package Weapons {
+class Weapon {
+-weaponID
+-name
+-price
+-description
+-image
+}
+}
+
+Client "1"-->"*" Order : performs
+Order "1"-->"*" Weapon : has
+Order "1" --> "1" OrderStatus: has
+
+@enduml

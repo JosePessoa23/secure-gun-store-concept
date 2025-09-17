@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide methods
+skinparam classAttributeIconSize 0
+
+package Users{
+class Client{
+-clientID
+-name
+-email
+-password
+-birthDate
+-phoneNumber
+-address
+}
+}
+
+package Weapons{
+class Weapon{
+-weaponID
+-name
+-price
+-description
+-image
+}
+}
+
+package Orders{
+class Order{
+-orderID
+-date
+-orderNumber
+-paymentMethod
+-totalPrice
+-shippingMethod
+-clientID
+}
+}
+
+Client "1"-->"*" Weapon : adds to shopping cart >
+Client "1"-->"1" Order : performs >
+Order "1"-->"*" Weapon : has >
+
+@enduml

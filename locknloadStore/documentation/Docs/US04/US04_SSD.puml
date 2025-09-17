@@ -1,0 +1,55 @@
+@startuml
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam participant {
+    BackgroundColor AWS_BG_COLOR
+    BorderColor AWS_BORDER_COLOR
+}
+
+skinparam sequence {
+    LifeLineBorderColor DodgerBlue
+    LifeLineBackgroundColor APPLICATION
+
+    ActorBackgroundColor APPLICATION
+    ActorBorderColor DodgerBlue
+
+    BackgroundColor #FFFFFF
+    ArrowColor DodgerBlue
+    BorderColor DodgerBlue
+    ParticipantBorderColor DodgerBlue
+
+    GroupBorderColor #082642
+    GroupBackgroundColor APPLICATION
+}
+
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 04 - Approve/deny a license
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+actor "<b>ERCA" as A
+participant "<b>System" as CR
+
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> CR: Asks to approve/deny a license application
+activate CR
+
+
+CR -> A: informs the user of the operation's success/failure
+deactivate CR
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

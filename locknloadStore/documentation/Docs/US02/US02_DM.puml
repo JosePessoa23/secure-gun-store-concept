@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide methods
+skinparam classAttributeIconSize 0
+
+
+
+
+package Users{
+class Client{
+-clientID
+-name
+-email
+-password
+-birthDate
+-phoneNumber
+-address
+}
+
+}
+
+package Licenses{
+class License{
+-licenseID
+-licenseNumber
+-name
+-email
+-birthDate
+-address
+-expiryDate
+-licenseType
+}
+class LicenseApplication{
+-name
+-email
+-birthDate
+-address
+-medicalCertificate
+-documentID
+}
+}
+
+
+Client "1"-->"*" License : has >
+Client "1"-->"*" LicenseApplication : apply >
+
+@enduml

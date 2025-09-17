@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg container">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="/home">LockNLoad</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
+      <div class="w-100 d-flex gap-3 justify-content-center">
+        <ul class="navbar-nav gap-5">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/home" aria-current="page">Home</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn && hasFeature('catalog')">
+            <a class="nav-link" routerLink="/catalog">Catalog</a>
+          </li>
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a class="nav-link"  routerLink="/licenseApplication">Apply for License</a>
+          </li>
+        </ul>
+      </div>
+      <ul class="navbar-nav d-flex flex-row gap-3">
+        <div class="ng" *ngIf="isLoggedIn; else notLoggedIn">
+          <a *ngIf="hasFeature('catalog')" class="nav-link material-icons" aria-current="page" href="/shopping-cart">
+            <span class="material-symbols-outlined"> shopping_cart </span>
+            <tui-badge *ngIf="cartItemCount > 0" status="primary" class="tui-space_right-2 tui-space_bottom-2" [value]="cartItemCount"></tui-badge>
+          </a>
+          <div class="dropdown">
+            <a class="nav-link material-icons" aria-current="page" (click)="toggleDropdown()">
+              <span class="material-symbols-outlined">person</span>
+            </a>
+            <ul [class.show]="isOpen" class="dropdown-menu">
+              <li>
+                <a href="/user">User</a>
+              </li>
+              <li *ngIf="hasFeature('applicationsList')">
+                <a href="/applicationsList">Pending License Applications</a>
+              </li>
+            </ul>
+          </div>
+          <a class="nav-link material-icons" aria-current="page" href="#" (click)="logout()">
+            <span class="material-symbols-outlined"> logout </span>
+          </a>
+        </div>
+        <ng-template #notLoggedIn>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</nav>
+<tui-root>
+  <router-outlet></router-outlet>
+</tui-root>

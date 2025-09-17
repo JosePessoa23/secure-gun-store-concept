@@ -1,0 +1,69 @@
+@startuml
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam participant {
+    BackgroundColor AWS_BG_COLOR
+    BorderColor AWS_BORDER_COLOR
+}
+
+skinparam sequence {
+    LifeLineBorderColor DodgerBlue
+    LifeLineBackgroundColor APPLICATION
+
+    ActorBackgroundColor APPLICATION
+    ActorBorderColor DodgerBlue
+
+    BackgroundColor #FFFFFF
+    ArrowColor DodgerBlue
+    BorderColor DodgerBlue
+    ParticipantBorderColor DodgerBlue
+
+    GroupBorderColor #082642
+    GroupBackgroundColor APPLICATION
+}
+
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 11 - As a client, I want to be able to delete my account if necessary.
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+
+actor "<b>Client" as A
+participant "<b>DashboardPage" as CR
+participant "<b>DashboardService" as CC
+participant "<b>BackEnd" as BE
+
+
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> CR: Asks to delete his account
+activate CR
+
+CR -> CC: deleteAccount()
+activate CC
+
+CC -> BE: HTTP request (PUT)
+activate BE
+BE --> CC : confirmation of Account deletion
+deactivate BE
+
+
+CC-->CR : confirmation of Account deletion
+deactivate CC
+CR -> A: Shows a confirmation that the account was deleted and informs the user of the operation's success
+deactivate CR
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

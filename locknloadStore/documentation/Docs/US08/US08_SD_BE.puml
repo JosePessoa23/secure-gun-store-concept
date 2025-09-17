@@ -1,0 +1,110 @@
+@startuml
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam participant {
+    BackgroundColor AWS_BG_COLOR
+    BorderColor AWS_BORDER_COLOR
+}
+
+skinparam sequence {
+    LifeLineBorderColor DodgerBlue
+    LifeLineBackgroundColor APPLICATION
+
+    ActorBackgroundColor APPLICATION
+    ActorBorderColor DodgerBlue
+
+    BackgroundColor #FFFFFF
+    ArrowColor DodgerBlue
+    BorderColor DodgerBlue
+    ParticipantBorderColor DodgerBlue
+
+    GroupBorderColor #082642
+    GroupBackgroundColor APPLICATION
+}
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 08 - Complete an Order
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+actor "<b>Client" as A
+participant "<b>:OrderRouter" as OR
+participant "<b>:OrderController" as OC
+participant "<b>:OrderService" as OS
+participant "<b>:OrderDTO" as OD
+participant "<b>:OrderMapper" as OM
+participant "<b>:OrderRepository" as ORR
+participant "<b>OrderSchema" as OSC
+participant "<b>:ShoppingCartService" as SCS
+participant "<b>:ShoppingCartRepository" as SRR
+participant "<b>:EmailService" as ES
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> OR: HTTP request (post)
+activate OR
+
+OR -> OC: completeOrder(req, res, next)
+activate OC
+
+OC -> OS : completeOrder(shippingInfo, paymentInfo)
+activate OS
+
+OS -> SCS : getShoppingCart(userId)
+activate SCS
+SCS --> OS : shoppingCart
+deactivate SCS
+
+OS -> OM : mapShoppingCartToOrder(shoppingCart, shippingInfo, paymentInfo)
+activate OM
+OM -> OD : create()
+activate OD
+OD --> OM : orderDTO
+deactivate OD
+OM --> OS : orderDTO
+deactivate OM
+
+OS -> ORR : saveOrder(orderDTO)
+activate ORR
+ORR -> OSC : create(orderDTO)
+activate OSC
+OSC --> ORR : order
+deactivate OSC
+ORR --> OS : order
+deactivate ORR
+
+OS -> SCS : clearShoppingCart(userId)
+activate SCS
+SCS -> SRR : updateOne({userId: userId}, {$set: {items: []}})
+activate SRR
+SRR --> SCS : updatedShoppingCart
+deactivate SRR
+SCS --> OS : updatedShoppingCart
+deactivate SCS
+
+OS -> ES : sendConfirmationEmail(order)
+activate ES
+ES --> OS : emailSent
+deactivate ES
+
+OS --> OC : order
+deactivate OS
+OC --> OR: order
+deactivate OC
+
+OR --> A: Order Confirmation
+deactivate OR
+
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

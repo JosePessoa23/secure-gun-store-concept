@@ -1,0 +1,191 @@
+@startuml
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam participant {
+BackgroundColor AWS_BG_COLOR
+BorderColor AWS_BORDER_COLOR
+}
+
+skinparam sequence {
+LifeLineBorderColor DodgerBlue
+LifeLineBackgroundColor APPLICATION
+
+ActorBackgroundColor APPLICATION
+ActorBorderColor DodgerBlue
+
+BackgroundColor #FFFFFF
+ArrowColor DodgerBlue
+BorderColor DodgerBlue
+ParticipantBorderColor DodgerBlue
+
+GroupBorderColor #082642
+GroupBackgroundColor APPLICATION
+}
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 01 - Reset Password
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+actor "<b>Client" as A
+participant "<b>:ResetPasswordEmailRoute" as ResetPasswordEmailRoute
+participant "<b>:ResetPasswordRoute" as ResetPasswordRoute
+
+participant "<b>:ResetPasswordController" as ResetPasswordController
+
+participant "<b>resetPasswordEmailMapper\n<b>:ResetPasswordEmailMapper" as ResetPasswordEmailMapper
+participant "<b>resetPasswordMapper\n<b>:ResetPasswordMapper" as ResetPasswordMapper
+
+participant "<b>resetPasswordEmailDTO\n<b>:ResetPasswordEmailDTO" as ResetPasswordEmailDTO
+participant "<b>resetPasswordDTO\n<b>:ResetPasswordDTO" as ResetPasswordDTO
+
+participant "<b>:ResetPasswordService" as ResetPasswordService
+
+participant "<b>:UserRepository" as UserRepository
+participant "<b>:ResetPasswordRepository" as ResetPasswordRepository
+
+participant "<b>:UserSchema" as UserSchema
+participant "<b>:PasswordResetTokenSchema" as PasswordResetTokenSchema
+participant "<b>:PasswordSchema" as PasswordSchema
+
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> ResetPasswordEmailRoute: HTTP POST: "/reset-password-email" (email)
+activate ResetPasswordEmailRoute
+
+ResetPasswordEmailRoute -> ResetPasswordController: resetPasswordEmail(req, res, next)
+activate ResetPasswordController
+
+ResetPasswordController -> ResetPasswordEmailMapper: resetPasswordEmailDTO = createResetPasswordEmailDTO(email)
+
+activate ResetPasswordEmailMapper
+
+ResetPasswordEmailMapper -> ResetPasswordEmailDTO**: create()
+
+deactivate ResetPasswordEmailMapper
+
+ResetPasswordController -> ResetPasswordService: resetPasswordEmail(resetPasswordEmailDTO)
+
+activate ResetPasswordService
+
+ResetPasswordService -> UserRepository: user = findByEmail(email)
+
+activate UserRepository
+
+UserRepository -> UserSchema**: user = findOne({email: email})
+
+deactivate UserRepository
+
+ResetPasswordService -> ResetPasswordRepository: createResetToken(user)
+
+activate ResetPasswordRepository
+
+ResetPasswordRepository -> PasswordResetTokenSchema**: token = create({userId: user.id})
+
+ResetPasswordRepository -> ResetPasswordRepository: sendResetPasswordEmail(user, token)
+
+ResetPasswordRepository -> ResetPasswordService: return token
+
+deactivate ResetPasswordRepository
+
+ResetPasswordService -> ResetPasswordController: success
+
+deactivate ResetPasswordService
+
+ResetPasswordController -> ResetPasswordEmailRoute: res.status(200).json({message: 'Password \n reset token has been sent to your email'})
+
+deactivate ResetPasswordController
+
+ResetPasswordEmailRoute -> A: HTTP response (200)
+
+deactivate ResetPasswordEmailRoute
+
+A -> ResetPasswordRoute: HTTP POST: "/reset-password" (token, email, new_password, \n new_password_confirmation, authentication_app_code)
+
+activate ResetPasswordRoute
+
+ResetPasswordRoute -> ResetPasswordController: resetPassword(req, res, next)
+
+activate ResetPasswordController
+
+ResetPasswordController -> ResetPasswordMapper: resetPasswordDTO = createResetPasswordDTO(token, email, new_password, new_password_confirmation, authentication_app_code)
+
+activate ResetPasswordMapper
+
+ResetPasswordMapper -> ResetPasswordDTO**: create()
+
+deactivate ResetPasswordMapper
+
+ResetPasswordController -> ResetPasswordService: resetPassword(resetPasswordDTO)
+
+activate ResetPasswordService
+
+ResetPasswordService -> UserRepository: user = findByEmail(resetPasswordDTO.email)
+
+activate UserRepository
+
+UserRepository -> UserSchema**: user = findOne({email: email})
+
+deactivate UserRepository
+
+ResetPasswordService -> ResetPasswordRepository: token = findTokenByEmail(user.email, resetPasswordDTO.token)
+
+activate ResetPasswordRepository
+
+ResetPasswordRepository -> PasswordResetTokenSchema**: token = findOne({token: token})
+
+deactivate ResetPasswordRepository
+
+ResetPasswordService -> ResetPasswordRepository: currentPassword = getCurrentUserPassword(user.id)
+
+activate ResetPasswordRepository
+
+ResetPasswordRepository -> PasswordSchema**: currentPassword = findOne({userId: user_id, deletedAt: null})
+
+deactivate ResetPasswordRepository
+
+ResetPasswordService -> ResetPasswordRepository: newPassword = createNewPassword(user.id, resetPasswordDTO.new_password)
+
+activate ResetPasswordRepository
+
+ResetPasswordRepository -> PasswordSchema**: create({userId: user_id, password: new_password})
+
+deactivate ResetPasswordRepository
+
+ResetPasswordService -> ResetPasswordRepository: deleteOldPassword(user.id, currentPassword.id)
+
+activate ResetPasswordRepository
+
+ResetPasswordRepository -> PasswordSchema**: update({userId: user_id, user_id: current_password_id}, {deletedAt: new Date()})
+
+ResetPasswordRepository -> ResetPasswordRepository: sendResetPasswordConclusionEmail(user)
+
+ResetPasswordRepository -> ResetPasswordService: success
+
+deactivate ResetPasswordRepository
+
+ResetPasswordService -> ResetPasswordController: success
+
+deactivate ResetPasswordService
+
+ResetPasswordController -> ResetPasswordRoute: res.status(200).json({message: 'Password \n has been reset'})
+
+deactivate ResetPasswordController
+
+ResetPasswordRoute -> A: HTTP response (200)
+
+
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

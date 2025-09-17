@@ -1,0 +1,24 @@
+<div class="login-container container mt-5">
+  <div class="login-form rounded-5 p-4">
+    <h2 class="fw-bold mb-5">Setup 2FA</h2>
+    <p class="mb-4">
+      When you enable two-factor authentication, you add an extra layer of
+      security to your account. You will need to enter a verification code
+    </p>
+    <button
+      [disabled]="qrCode !== ''"
+      size="l"
+      tuiButton
+      (click)="setupTwoFactor()"
+      class="w-50 mt-4 tui-space_right-3 tui-space_bottom-3"
+    >
+      Generate QR Code
+    </button>
+    <div
+      style="width: 15rem"
+      *ngIf="qrCode"
+      [innerHTML]="qrCode"
+      class="img-fluid shadow p-3 rounded-5 mt-4"
+    ></div>
+  </div>
+</div>

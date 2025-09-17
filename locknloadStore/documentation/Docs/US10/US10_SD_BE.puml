@@ -1,0 +1,86 @@
+@startuml hello
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam participant {
+    BackgroundColor AWS_BG_COLOR
+    BorderColor AWS_BORDER_COLOR
+}
+
+skinparam sequence {
+    LifeLineBorderColor DodgerBlue
+    LifeLineBackgroundColor APPLICATION
+
+    ActorBackgroundColor APPLICATION
+    ActorBorderColor DodgerBlue
+
+    BackgroundColor #FFFFFF
+    ArrowColor DodgerBlue
+    BorderColor DodgerBlue
+    ParticipantBorderColor DodgerBlue
+
+    GroupBorderColor #082642
+    GroupBackgroundColor APPLICATION
+}
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 10 - As a client, I want to edit my profile information such as delivery address and contact details.
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+actor "<b>Client" as A
+participant "<b>:DashboardRoute" as CR
+participant "<b>:DashboardController" as CC
+participant "<b>:DashboardMapper" as CM
+participant "<b>:DashboardService" as CS
+participant "<b>updatedClientDTO\n<b>:ClientDTO" as CD
+participant "<b>:ClientRepository" as CREP
+participant "<b>:ClientSchema" as CSC
+
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> CR: HTTP request (put)
+activate CR
+
+CR -> CC: put(req, res, next)
+activate CC
+
+CC -> CS : updateClient(name,email,password,birthDate,phoneNumber,address)
+activate CS
+CS -> CS : verifyFormat(name,email,password,birthDate,phoneNumber,address)
+CS -> CREP : updatedClient = updateClient(name,email,password,birthDate,phoneNumber,address)
+activate CREP
+CREP -> CSC : save()
+activate CSC
+deactivate CSC
+deactivate CREP
+
+
+CS -> CM : updatedClientDTO = toDTO(updatedClient)
+activate CM
+CM -> CD : create()
+activate CD
+deactivate CD
+deactivate CM
+
+
+CS -> CC : updatedClientDTO
+deactivate CS
+CC -> CR: updatedClientDTO
+deactivate CC
+
+CR -> A: updatedClientDTO
+deactivate CR
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

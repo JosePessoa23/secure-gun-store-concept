@@ -1,0 +1,69 @@
+<div class="container d-flex flex-column p-5 gap-5">
+  <div class="d-flex flex-column gap-5">
+<div class="conteudo-div">
+
+  <span class="w-100 fs-2 fw-bold text-primary">User Details</span>
+
+
+    <div class="label">
+      <label for="name">Name:</label>
+    </div>
+    <input
+      type="text"
+      id="name"
+      placeholder="Name"
+      [(ngModel)]="name"
+      (change)="onNameChange($event)"
+    />
+
+  <div class="label">
+    <label for="email">Email:</label>
+  </div>
+  <input
+    type="text"
+    id="email"
+    placeholder="Email"
+    [value]="email"
+    disabled
+  />
+
+  <div class="label">
+    <label for="phoneNumber">Phone Number:</label>
+  </div>
+  <input
+    type="text"
+    id="phoneNumber"
+    placeholder="PhoneNumber"
+    [(ngModel)]="phoneNumber"
+    (change)="onPhoneNumberChange($event)"
+  />
+
+  <div class="label">
+    <label for="birthdate">BirthDate:</label>
+  </div>
+  <input
+    type="date"
+    id="birthdate"
+    placeholder="BirthDate"
+    [value]="formatDate(birthDate)"
+    (change)="onBirthDateChange($event)"
+  />
+
+  <div class="label">
+    <label for="address">Address:</label>
+  </div>
+  <input
+    type="text"
+    id="address"
+    placeholder="Address"
+    [(ngModel)]="address"
+    (change)="onAddressChange($event)"
+  />
+
+  <button _ngcontent-ng-c888804223="" tuiicons="" tuibutton="" type="button" class="mt-3 w-25 rounded-pill custom-button" _nghost-ng-c3926154569="" tabindex="0" data-size="l" data-appearance="primary" (click)="onSend()">
+    <span _ngcontent-ng-c3926154569="" class="t-content">Send</span>
+</button>
+
+</div>
+</div>
+</div>

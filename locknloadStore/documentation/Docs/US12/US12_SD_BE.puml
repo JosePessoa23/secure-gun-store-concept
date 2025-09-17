@@ -1,0 +1,85 @@
+@startuml
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam participant {
+    BackgroundColor AWS_BG_COLOR
+    BorderColor AWS_BORDER_COLOR
+}
+
+skinparam sequence {
+    LifeLineBorderColor DodgerBlue
+    LifeLineBackgroundColor APPLICATION
+
+    ActorBackgroundColor APPLICATION
+    ActorBorderColor DodgerBlue
+
+    BackgroundColor #FFFFFF
+    ArrowColor DodgerBlue
+    BorderColor DodgerBlue
+    ParticipantBorderColor DodgerBlue
+
+    GroupBorderColor #082642
+    GroupBackgroundColor APPLICATION
+}
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 12 - Add New Weapon to Catalog
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+actor "<b>Admin" as A
+participant "<b>WeaponResource" as WR
+participant "<b>WeaponController" as WC
+participant "<b>WeaponService" as WS
+participant "<b>WeaponDTO" as WD
+participant "<b>WeaponMapper" as WM
+participant "<b>WeaponRepository" as WRR
+participant "<b>WeaponSchema" as WSC
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> WR: HTTP request (post)
+activate WR
+
+WR -> WC: addWeapon(req, res, next)
+activate WC
+
+WC -> WD : create()
+activate WD
+WD --> WC : weaponDTO
+deactivate WD
+
+
+WC -> WS : createWeapon(weaponDTO)
+activate WS
+
+WS -> WRR : saveWeapon(weaponDTO)
+activate WRR
+WRR -> WSC : create(weaponDTO)
+activate WSC
+WSC --> WRR : newWeapon
+deactivate WSC
+WRR --> WS : newWeapon
+deactivate WRR
+
+WS --> WC : newWeapon
+deactivate WS
+WC -> WR: newWeapon
+deactivate WC
+
+WR -> A: New Weapon Added
+deactivate WR
+
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

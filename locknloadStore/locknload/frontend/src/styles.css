@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import "material-icons/iconfont/material-icons.css";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Jersey+25&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.text-primary {
+  color: var(--tui-primary) !important;
+}
+
+.btn-primary {
+  background-color: var(--tui-primary) !important;
+  border-color: var(--tui-primary) !important;
+}
+
+.t-placeholder {
+  color: black !important;
+}
+
+input {
+  color: black !important;
+}

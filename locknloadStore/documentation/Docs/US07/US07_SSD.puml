@@ -1,0 +1,65 @@
+@startuml
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam participant {
+BackgroundColor AWS_BG_COLOR
+BorderColor AWS_BORDER_COLOR
+}
+
+skinparam sequence {
+LifeLineBorderColor DodgerBlue
+LifeLineBackgroundColor APPLICATION
+
+ActorBackgroundColor APPLICATION
+ActorBorderColor DodgerBlue
+
+BackgroundColor #FFFFFF
+ArrowColor DodgerBlue
+BorderColor DodgerBlue
+ParticipantBorderColor DodgerBlue
+
+GroupBorderColor #082642
+GroupBackgroundColor APPLICATION
+}
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 07 - Use Shopping Cart
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+actor "<b>Client" as A
+participant "<b>System" as CR
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> CR: Selects a Weapon to add to the Shopping Cart
+activate CR
+
+CR -> A: Displays the updated Shopping Cart
+deactivate CR
+
+A -> CR: Removes a Weapon from the Shopping Cart
+activate CR
+
+CR -> A: Displays the updated Shopping Cart
+deactivate CR
+
+A -> CR: Proceeds to Checkout
+activate CR
+
+CR -> A: Displays the Checkout page
+deactivate CR
+
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

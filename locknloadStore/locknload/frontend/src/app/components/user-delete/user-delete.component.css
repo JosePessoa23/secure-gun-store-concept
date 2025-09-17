@@ -1,0 +1,13 @@
+@import url('../../../styles.css');
+
+.custom-button {
+  background-color: var(--tui-primary) !important;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 50px; /* Adjust this if needed */
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}

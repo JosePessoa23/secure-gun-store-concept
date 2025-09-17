@@ -1,0 +1,18 @@
+<div style="width: 18rem; height: 30rem;"
+  class="shadow p-4 rounded-4 justify-content-between align-items-center d-flex flex-column">
+  <div class="w-100 d-flex align-items-end justify-content-end">
+    <button appearance="secondary" tuiIconButton type="button" class="tui-space_right-3 tui-space_bottom-3 rounded-circle"
+      (click)="onAddToCart()">
+      <span class="fs-2 material-icons">add_shopping_cart</span>
+    </button>
+  </div>
+  <div style="height:20rem !important" class="d-flex flex-column justify-content-center align-items-center">
+    <img style="max-height: 10rem;" class="img-fluid" [src]="weaponsSrc + weapon.image" [alt]="weapon.name" />
+  </div>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <h3 class="fw-bold fs-4">{{ weapon.name }}</h3>
+    <p class="fs-5">{{ weapon.description }}</p>
+  </div>
+  <p class="price fs-4 text-success fw-bold">{{ weapon.price | currency }}</p>
+
+</div>

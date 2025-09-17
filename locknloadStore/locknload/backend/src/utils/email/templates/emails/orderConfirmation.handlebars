@@ -1,0 +1,41 @@
+<div class="f-fallback">
+  <h1>Hi {{name}},</h1>
+  <p>Thank you for your order! We’re excited to let you know that your order has been successfully placed. Here are the details of your purchase:</p>
+  <p><strong>Order Number:</strong> {{orderNumber}}</p>
+  <p><strong>Order Date:</strong> {{orderDate}}</p>
+  <p><strong>Items Ordered:</strong></p>
+  <ul>
+    {{#each items}}
+    <li>{{this}}</li>
+    {{/each}}
+  </ul>
+  <p><strong>Total Amount:</strong> {{totalAmount}}</p>
+  <p>You can track your order status and view more details by clicking the button below:</p>
+  <!-- Action -->
+  <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+    <tr>
+      <td align="center">
+        <!-- Border based button -->
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+          <tr>
+            <td align="center">
+              <a href="{{orderDetailsLink}}" class="f-fallback button button--green" target="_blank">View Order Details</a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <p>If you have any questions or need assistance, please <a href="http://locknload-desofs.pt/support">contact our support team</a>.</p>
+  <p>Thanks for shopping with us,
+  <br>The LockNLoad team</p>
+  <!-- Sub copy -->
+  <table class="body-sub" role="presentation">
+    <tr>
+      <td>
+        <p class="f-fallback sub">If you’re having trouble with the button above, copy and paste the URL below into your web browser.</p>
+        <p class="f-fallback sub">{{orderDetailsLink}}</p>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide methods
+skinparam classAttributeIconSize 0
+
+package Users{
+
+    class User{
+        -userID
+        -name
+        -email
+        -recoveryCodes
+        -2FAEnabled
+    }
+
+    class Password{
+        -password
+        -createdAt
+        -deletedAt
+    }
+
+    class PasswordResetToken{
+        -token
+        -expiresAt
+    }
+
+    class Client{
+        -birthDate
+        -phoneNumber
+        -address
+    }
+
+    class Admin{
+
+    }
+
+    class ERCA{
+
+    }
+}
+
+User <|-- Client
+User <|-- Admin
+User <|-- ERCA
+
+User "1" -->"*" Password : has >
+User "1" -->"*" PasswordResetToken : has >
+
+Admin "1" -->"*" Client : manages >
+
+@enduml

@@ -1,0 +1,90 @@
+@startuml hello
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam participant {
+    BackgroundColor AWS_BG_COLOR
+    BorderColor AWS_BORDER_COLOR
+}
+
+skinparam sequence {
+    LifeLineBorderColor DodgerBlue
+    LifeLineBackgroundColor APPLICATION
+
+    ActorBackgroundColor APPLICATION
+    ActorBorderColor DodgerBlue
+
+    BackgroundColor #FFFFFF
+    ArrowColor DodgerBlue
+    BorderColor DodgerBlue
+    ParticipantBorderColor DodgerBlue
+
+    GroupBorderColor #082642
+    GroupBackgroundColor APPLICATION
+}
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 06 - View of all Weapons
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+actor "<b>Client" as A
+participant "<b>:WeaponsRoute" as WR
+participant "<b>:WeaponsController" as WC
+participant "<b>:WeaponsMapper" as WM
+participant "<b>:WeaponsService" as WS
+participant "<b>weaponsDTO\n<b>:WeaponsDTO" as WD
+participant "<b>:WeaponsRepository" as WRR
+participant "<b>:WeaponsSchema" as WSC
+participant "<b>listWeaponsDTO\n<b>:List<WeaponsDTO>" as LWD
+
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> WR: HTTP request (get)
+activate WR
+
+WR -> WC: get(req, res, next)
+activate WC
+
+WC -> WS : getAllWeapons()
+activate WS
+WS -> WRR : listWeapons = getAllWeapons()
+activate WRR
+WRR -> WSC : find()
+activate WSC
+deactivate WSC
+deactivate WRR
+
+loop [listWeapons]
+WS -> WM : weaponsDTO = toDTO(weapons)
+activate WM
+WM -> WD : create()
+activate WD
+deactivate WD
+deactivate WM
+WS-> LWD : add(weaponsDTO)
+activate LWD
+deactivate LWD
+
+end
+
+WS -> WC : listWeaponsDTO
+deactivate WS
+WC -> WR: listWeaponsDTO
+deactivate WC
+
+WR -> A: List of Weapons
+deactivate WR
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

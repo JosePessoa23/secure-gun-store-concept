@@ -1,0 +1,17 @@
+<div class="conteudo-div">
+  <div class="container d-flex flex-column p-5 gap-5">
+
+  <span class="w-100 fs-2 fw-bold text-primary">Purchase History</span>
+
+  <div *ngFor="let order of orders" class="order-details">
+    <p><strong>Order Number:</strong> {{ order.orderNumber }}</p>
+    <p><strong>Payment Method:</strong> {{ order.paymentMethod }}</p>
+    <p><strong>Email:</strong> {{ order.email }}</p>
+    <p><strong>Order Status:</strong> {{ order.orderStatus }}</p>
+    <p><strong>Shipping Method:</strong> {{ order.shippingMethod }}</p>
+    <p><strong>Date:</strong> {{ order.date | date:'shortDate' }}</p>
+    <p><strong>Weapons:</strong> {{ order.weapons }}</p>
+  </div>
+
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container d-flex flex-column p-5 gap-5">
+  <div class="d-flex flex-column gap-5">
+    <span class="w-100 display-3 fw-bold text-primary">Create Weapon</span>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" data-mode="onLight">
+      <div class="d-flex flex-column gap-3 align-items-start">
+        <div class="d-flex flex-column gap-3 align-items-start w-100">
+          <tui-input class="w-50" formControlName="name">
+            Weapon Name
+            <input placeholder="Enter weapon name" tuiTextfield />
+            <span class="tui-required"></span>
+          </tui-input>
+        </div>
+
+        <div class="d-flex flex-column gap-3 align-items-start w-100">
+          <tui-input class="w-50" formControlName="price">
+            Price
+            <input placeholder="Enter weapon price" tuiTextfield type="number" />
+            <span class="tui-required"></span>
+          </tui-input>
+        </div>
+
+        <div class="d-flex flex-column gap-3 align-items-start w-100">
+          <tui-text-area class="w-50" formControlName="description">
+            Description
+            <textarea placeholder="Enter weapon description" tuiTextfield></textarea>
+            <span class="tui-required"></span>
+          </tui-text-area>
+        </div>
+
+        <span class="fw-bold text-dark">Weapon Image</span>
+        <tui-input-files *ngIf="!form.get('image')!.value" accept="image/*" formControlName="image"
+          (reject)="onReject($event)"></tui-input-files>
+
+        <tui-files class="tui-space_top-1">
+          <tui-file *ngIf="loadedFiles$ | async as file" [file]="file" [showDelete]="form.get('image')!.enabled"
+            (removed)="removeFile()"></tui-file>
+
+          <tui-file *ngIf="rejectedFiles$ | async as file" state="error" [file]="file" [showDelete]="form.get('image')!.enabled"
+            (removed)="clearRejected()"></tui-file>
+
+          <tui-file *ngIf="loadingFiles$ | async as file" state="loading" [file]="file"
+            [showDelete]="form.get('image')!.enabled"></tui-file>
+        </tui-files>
+
+        <button [disabled]="!form.valid" class="w-25 rounded-pill" tuiButton type="submit">Create Weapon</button>
+      </div>
+    </form>
+
+  </div>
+</div>

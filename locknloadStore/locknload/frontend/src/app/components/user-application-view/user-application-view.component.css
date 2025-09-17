@@ -1,0 +1,65 @@
+.conteudo-div {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 5rem;
+  }
+  
+  .label {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .labelButton {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .label label {
+    font-weight: bold;
+  }
+  
+  p {
+    padding-left: 0.25rem;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  button {
+    width: fit-content;
+    background-color: #b1b1b1;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  button:hover {
+    background-color: #b1b1b1;
+  }
+
+  .aprrove-buttons {
+    width: fit-content;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 1rem;
+  }
+
+  .approve-button {
+    background-color: green;
+    color: white;
+  }
+
+  .reject-button {
+    background-color: rgb(255, 35, 35);
+    color: white;
+  }

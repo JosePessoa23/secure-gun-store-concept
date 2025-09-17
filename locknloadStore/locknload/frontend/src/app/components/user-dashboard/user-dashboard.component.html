@@ -1,0 +1,63 @@
+<div class="p-5 container">
+  <h1 class="mb-5">Apply for a license</h1>
+  <form
+    class="d-flex flex-column gap-3"
+    [formGroup]="form"
+    (ngSubmit)="uploadFile()"
+  >
+    <tui-input class="w-50" formControlName="name">
+      Name
+      <input placeholder="Name" tuiTextfield type="text" />
+      <span class="tui-required"></span>
+    </tui-input>
+
+    <tui-input class="w-50" formControlName="email">
+      Email
+      <input placeholder="Email" tuiTextfield type="email" />
+      <span class="tui-required"></span>
+    </tui-input>
+
+    <tui-input-date
+      class="w-50"
+      formControlName="birthDate"
+      tuiUnfinishedValidator="Finish filling the field"
+    >
+      BirthDate
+      <span class="tui-required"></span>
+    </tui-input-date>
+
+    <tui-input class="w-50" formControlName="address">
+      Address
+      <input placeholder="Address" tuiTextfield type="text" />
+      <span class="tui-required"></span>
+    </tui-input>
+
+    <tui-files class="tui-space_top-1 d-flex flex-column">
+      <label for="medical-certificate">Medical Certificate</label>
+      <input
+        type="file"
+        id="medical-certificate"
+        (change)="onFileSelected($event, 'medicalCertificate')"
+      />
+    </tui-files>
+
+    <tui-files class="tui-space_top-1">
+      <label for="document-id">ID Document</label>
+      <input
+        type="file"
+        id="document-id"
+        (change)="onFileSelected($event, 'documentId')"
+      />
+    </tui-files>
+
+    <tui-checkbox-labeled formControlName="dataConsent">
+      <b>Data Consent</b>
+      <div class="example">Do you agree to share your data with us?</div>
+    </tui-checkbox-labeled>
+
+
+    <button class="w-25 mt-5" tuiButton type="submit" class="tui-space_right-3 tui-space_bottom-3">
+      Send
+    </button>
+  </form>
+</div>

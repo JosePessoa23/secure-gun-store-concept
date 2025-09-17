@@ -1,0 +1,98 @@
+@import url('../../../styles.css');
+
+.conteudo-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 25rem;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.conteudo-div input,
+.conteudo-div button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.conteudo-div h1 {
+  white-space: nowrap;
+  font-size: 2rem;
+  font-family: 'Monaco', monospace;
+}
+
+.conteudo-div button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.conteudo-div button:hover {
+  background-color: #0056b3;
+}
+
+.conteudo-div input[type='date'] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.conteudo-div input[type='date']:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.conteudo-div input[type='date']:hover {
+  border-color: #007bff;
+}
+
+.conteudo-div input[type='date']:disabled {
+  background-color: #f2f2f2;
+  cursor: not-allowed;
+}
+
+.conteudo-div input[type='text'] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.conteudo-div input[type='text']:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.conteudo-div input[type='text']:hover {
+  border-color: #007bff;
+}
+
+.conteudo-div input[type='text']:disabled {
+  background-color: #f2f2f2;
+  cursor: not-allowed;
+}
+
+.label {
+  display: flex;
+  align-self: flex-end;
+  justify-content: flex-start;
+  width: 100%;
+}

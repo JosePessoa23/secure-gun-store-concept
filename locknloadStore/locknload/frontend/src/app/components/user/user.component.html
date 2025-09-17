@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-3 sidebar">
+      <ul>
+        <li>
+          <a routerLink="/user/userDetails" routerLinkActive="active"
+            >User Details</a
+          >
+        </li>
+        <li>
+          <a routerLink="/user/changePassword" routerLinkActive="active"
+            >Change Password</a
+          >
+        </li>
+        <li>
+          <a routerLink="/user/purchaseHistory" routerLinkActive="active"
+            >Purchase History</a
+          >
+        </li>
+        <li>
+          <a routerLink="/user/delete" routerLinkActive="active"
+            >Delete Account</a
+          >
+        </li>
+        <li>
+          <a routerLink="/user/tfa" routerLinkActive="active">Setup 2FA</a>
+        </li>
+        <li>
+          <a routerLink="/user/activeSessions" routerLinkActive="active"
+            >Active Sessions
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

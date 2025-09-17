@@ -1,0 +1,183 @@
+pipeline {
+    agent any
+
+    environment {
+        GITHUB_TOKEN = credentials('github-token') // Assuming you've set up GitHub token credentials
+        NX_CLOUD = 'false'
+        NODE_OPTIONS = '--max-old-space-size=8192'
+    }
+
+    tools {
+        nodejs 'NodeJS 22.2.0'
+    }
+
+    // Run every day at 3 AM
+    triggers {
+        cron('0 3 * * *')
+    }
+
+    options {
+        // Increase the timeout for long-running stages
+        timeout(time: 60, unit: 'MINUTES')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/JosePessoa23/desofs2024_M1A_7.git',
+                    branch: 'main',
+                    credentialsId: 'github-token'
+                sh 'ls -al' // List root directory contents
+                sh 'ls -al locknload' // List locknload directory contents
+            }
+        }
+        stage('Install Nx') {
+            steps {
+                echo 'Installing Nx...'
+                sh 'npm install -g nx'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                dir('locknload') {
+                    echo 'Installing project dependencies...'
+                    sh 'node --max_old_space_size=4096 $(which npm) install'
+                }
+            }
+        }
+        stage('Build Backend') {
+            steps {
+                dir('locknload') {
+                    echo 'Building the backend...'
+                    sh 'npx nx run backend:build:production'
+                }
+            }
+        }
+        stage('Build Frontend') {
+            steps {
+                dir('locknload') {
+                    echo 'Building the frontend...'
+                    sh 'npx nx run frontend:build:production'
+                }
+            }
+        }
+        stage('Static Code Analysis') {
+            parallel {
+                stage('Backend Lint') {
+                    steps {
+                        dir('locknload') {
+                            echo 'Running static code analysis for backend...'
+                            sh 'npx nx run backend:lint'
+                        }
+                    }
+                }
+                stage('Frontend Lint') {
+                    steps {
+                        dir('locknload') {
+                            echo 'Running static code analysis for frontend...'
+                            sh 'npx nx run frontend:lint'
+                        }
+                    }
+                }
+            }
+        }
+        stage('Dependency Check') {
+            parallel {
+                stage('Backend Dependency Check') {
+                    steps {
+                        dir('locknload/backend') {
+                            echo 'Running dependency check for backend...'
+                            sh 'npm audit'
+                        }
+                    }
+                }
+                stage('Frontend Dependency Check') {
+                    steps {
+                        dir('locknload/frontend') {
+                            echo 'Running dependency check for frontend...'
+                            sh 'npm audit'
+                        }
+                    }
+                }
+            }
+        }
+        stage('Vulnerability Scanning') {
+            steps {
+                dir('locknload') {
+                    echo 'Running malicious code detection...'
+                    sh 'npm run lint'
+                }
+            }
+        }
+        stage('Unit Tests') {
+            parallel {
+                stage('Backend Unit Tests') {
+                    steps {
+                        dir('locknload') {
+                            echo 'Running unit tests for backend...'
+                            sh 'npx nx run backend:test'
+                        }
+                    }
+                }
+                stage('Frontend Unit Tests') {
+                    steps {
+                        dir('locknload') {
+                            echo 'Running unit tests for frontend...'
+                            sh 'npx nx run frontend:test'
+                        }
+                    }
+                }
+            }
+        }
+        stage('Integration Tests') {
+            parallel {
+                stage('Backend Integration Tests') {
+                    steps {
+                        dir('locknload/backend') {
+                            echo 'Running integration tests for backend...'
+                            // Add your integration test commands here
+                            // sh './run-integration-tests.sh' // Example integration test script
+                        }
+                    }
+                }
+                stage('Frontend Integration Tests') {
+                    steps {
+                        dir('locknload/frontend') {
+                            echo 'Running integration tests for frontend...'
+                            // Add your integration test commands here
+                            // sh './run-integration-tests.sh' // Example integration test script
+                        }
+                    }
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the backend...'
+                dir('locknload') {
+                    sh 'npm run deploy:backend'
+                }
+                echo 'Deploying the frontend...'
+                dir('locknload') {
+                    sh 'npm run deploy:frontend'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Cleaning up...'
+            // Add any cleanup commands here
+            // sh './cleanup.sh' // Example cleanup script
+        }
+        success {
+            echo 'Build succeeded!'
+            // Add any actions to perform on successful build
+        }
+        failure {
+            echo 'Build failed!'
+            // Add any actions to perform on failed build
+        }
+    }
+}

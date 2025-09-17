@@ -1,0 +1,19 @@
+<div class="container d-flex flex-column p-5 gap-5">
+  <div class="d-flex flex-column gap-3">
+    <span class="w-100 display-3 fw-bold text-primary">Shopping Cart</span>
+    <span class="w-100 fs-3" *ngIf="shoppingCart.items.length > 0">Your guns are waiting to fly</span>
+  </div>
+  <div class="d-flex flex-column gap-3">
+    <shopping-cart-item [item]="item" *ngFor="let item of shoppingCart.items">cheiro</shopping-cart-item>
+  </div>
+  <div class="d-flex flex-row justify-content-between align-items-center gap-3" *ngIf="shoppingCart.items.length > 0">
+    <span class="fs-3 fw-bold">Total: {{ getTotal() | currency }}</span>
+    <button tuiButton type="button" class="tui-space_right-3 tui-space_bottom-3" (click)="checkout()">
+      Checkout
+    </button>
+  </div>
+  <div class="d-flex flex-column gap-3" *ngIf="shoppingCart.items.length === 0">
+    <span class="fs-3 fw-bold">Your cart is empty</span>
+    <span class="fs-3">Go back to the catalog and add some weapons</span>
+  </div>
+</div>

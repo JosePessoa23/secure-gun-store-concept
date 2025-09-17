@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+
+actor "Client" as CLI
+actor "Admin" as ADM
+actor "ERCA" as ERC
+
+
+rectangle LockNLoad{
+
+
+usecase "UC01: As a client, I want to reset my password if I forget it." as UC01
+usecase "UC02: As a client, I want to upload necessary documents to verify my identity during the license application process." as UC02
+usecase "UC03: As a client, I want to see the status of my license application." as UC03
+usecase "UC04: As ERCA, I want to approve/deny a users license application." as UC04
+usecase "UC05: As a client, I want to filter the weapons catalog based on different criteria such as type, price, and availability." as UC05
+usecase "UC06: As a client, I want to see the weapons catalog" as UC06
+usecase "UC07: As a client, I want to add items to my shopping cart." as UC07
+usecase "UC08: As a client, I want to complete an order." as UC08
+usecase "UC09: As a client, I want to view a history of all my previous purchases." as UC09
+usecase "UC10: As a client, I want to edit my profile information such as delivery address and contact details." as UC10
+usecase "UC11: As a client, I want to be able to delete my account if necessary." as UC11
+usecase "UC12: As an administrator, I want to have the ability to add a new weapon to the catalog of weapons available for sale." as UC12
+}
+
+CLI -- UC01
+CLI -- UC02
+CLI -- UC03
+ERC -- UC04
+CLI -- UC05
+CLI -- UC06
+CLI -- UC07
+CLI -- UC08
+CLI -- UC09
+CLI -- UC10
+CLI -- UC11
+ADM -- UC12
+
+
+
+
+
+@enduml

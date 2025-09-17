@@ -1,0 +1,6 @@
+<div class="container d-flex flex-column p-5 gap-5 justify-content-center align-items-center">
+  <span class="display-3 fw-bold">Hot Deals 🔥</span>
+  <div class="d-flex flex-row gap-4">
+    <weapon-card [weapon]="weapon" *ngFor="let weapon of weapons"></weapon-card>
+  </div>
+</div>

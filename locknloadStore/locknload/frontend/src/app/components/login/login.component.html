@@ -1,0 +1,58 @@
+<div class="login-container">
+  <div class="login-form rounded-5 p-4">
+    <h2 class="fw-bold mb-5">Identify yourself</h2>
+    <form
+      class="d-flex flex-column gap-2 align-items-center justify-content-center"
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <tui-input
+        formControlName="email"
+        tuiTextfieldSize="m"
+        [tuiTextfieldCleaner]="true"
+        [tuiTextfieldLabelOutside]="true"
+        class="w-75"
+      >
+        Type an email
+        <input autocomplete="email" tuiTextfield type="email" />
+      </tui-input>
+      <tui-input-password
+        formControlName="password"
+        tuiTextfieldSize="m"
+        class="tui-space_top-2 w-75"
+        [tuiTextfieldLabelOutside]="true"
+      >
+        Type your password
+        <input placeholder="Make it secure!" tuiTextfield />
+      </tui-input-password>
+
+      <div *ngIf="hasTwoFactor" class="tui-space_top-2 w-50">
+        <tui-input
+          formControlName="twoFactorCode"
+          tuiTextfieldSize="m"
+          [tuiTextfieldCleaner]="true"
+          [tuiTextfieldLabelOutside]="true"
+        >
+          Two Factor Code
+          <input tuiTextfield type="text" />
+        </tui-input>
+      </div>
+
+      <div class="d-flex justify-content-center w-100">
+        <button
+          size="m"
+          tuiButton
+          [disabled]="!loginForm.valid"
+          type="submit"
+          class="w-25 mt-4 tui-space_right-3 tui-space_bottom-3"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+    <div class="mt-4">
+      <p>Forgot your password? Click the link bellow.</p>
+      <a routerLink="/reset-password-email">Reset Password</a>
+    </div>
+  </div>
+</div>

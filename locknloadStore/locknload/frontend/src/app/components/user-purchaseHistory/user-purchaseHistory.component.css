@@ -1,0 +1,17 @@
+@import url('../../../styles.css');
+
+
+
+  /* Content Styles */
+  
+
+  /* Order Details Styles */
+  .order-details {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+  }
+  
+ 

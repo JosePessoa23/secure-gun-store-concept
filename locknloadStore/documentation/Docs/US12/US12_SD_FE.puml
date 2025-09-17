@@ -1,0 +1,65 @@
+@startuml
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam participant {
+BackgroundColor AWS_BG_COLOR
+BorderColor AWS_BORDER_COLOR
+}
+
+skinparam sequence {
+LifeLineBorderColor DodgerBlue
+LifeLineBackgroundColor APPLICATION
+
+ActorBackgroundColor APPLICATION
+ActorBorderColor DodgerBlue
+
+BackgroundColor #FFFFFF
+ArrowColor DodgerBlue
+BorderColor DodgerBlue
+ParticipantBorderColor DodgerBlue
+
+GroupBorderColor #082642
+GroupBackgroundColor APPLICATION
+}
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 12 - Add New Weapon to Catalog
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+actor "<b>Admin" as A
+participant "<b>NewWeaponForm" as NWF
+participant "<b>WeaponService" as WS
+participant "<b>Backend" as BE
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> NWF: Enters weapon details
+activate NWF
+
+NWF -> WS: addWeapon(weapon)
+activate WS
+
+WS -> BE: HTTP request (POST)
+activate BE
+BE --> WS : confirmation of addition
+deactivate BE
+
+WS --> NWF : confirmation of addition
+deactivate WS
+NWF -> A: Displays confirmation message
+deactivate NWF
+
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

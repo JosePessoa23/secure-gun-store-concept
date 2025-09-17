@@ -1,0 +1,75 @@
+@startuml hello
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam participant {
+    BackgroundColor AWS_BG_COLOR
+    BorderColor AWS_BORDER_COLOR
+}
+
+skinparam sequence {
+    LifeLineBorderColor DodgerBlue
+    LifeLineBackgroundColor APPLICATION
+
+    ActorBackgroundColor APPLICATION
+    ActorBorderColor DodgerBlue
+
+    BackgroundColor #FFFFFF
+    ArrowColor DodgerBlue
+    BorderColor DodgerBlue
+    ParticipantBorderColor DodgerBlue
+
+    GroupBorderColor #082642
+    GroupBackgroundColor APPLICATION
+}
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 11 - As a client, I want to be able to delete my account if necessary.
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+actor "<b>Client" as A
+participant "<b>:DashboardRoute" as CR
+participant "<b>:DashboardController" as CC
+participant "<b>:DashboardMapper" as CM
+participant "<b>:DashboardService" as CS
+participant "<b>:ClientRepository" as CREP
+participant "<b>:ClientSchema" as CSC
+
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> CR: HTTP request (PUT)
+activate CR
+
+CR -> CC: put(req, res, next)
+activate CC
+
+CC -> CS : deleteAccount(email)
+activate CS
+CS -> CREP : deleteAccount(email)
+activate CREP
+CREP -> CSC : save()
+activate CSC
+deactivate CSC
+deactivate CREP
+
+CS --> CC : confirmation of Account deletion
+deactivate CS
+CC --> CR: confirmation of Account deletion
+deactivate CC
+
+CR --> A: confirmation of Account deletion
+deactivate CR
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

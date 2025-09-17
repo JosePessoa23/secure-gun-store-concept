@@ -1,0 +1,57 @@
+@startuml
+
+'-Style----------------------------------------------------------------------------------------------------------------
+
+autonumber
+
+skinparam DefaultTextAlignment center
+
+skinparam BackgroundColor #fafdff
+
+skinparam participant {
+BackgroundColor AWS_BG_COLOR
+BorderColor AWS_BORDER_COLOR
+}
+
+skinparam sequence {
+LifeLineBorderColor DodgerBlue
+LifeLineBackgroundColor APPLICATION
+
+ActorBackgroundColor APPLICATION
+ActorBorderColor DodgerBlue
+
+BackgroundColor #FFFFFF
+ArrowColor DodgerBlue
+BorderColor DodgerBlue
+ParticipantBorderColor DodgerBlue
+
+GroupBorderColor #082642
+GroupBackgroundColor APPLICATION
+}
+
+'-Title----------------------------------------------------------------------------------------------------------------
+
+title US 12 - Add New Weapon to Catalog
+
+'-Actors/Participants--------------------------------------------------------------------------------------------------
+
+actor "<b>Administrator" as A
+participant "<b>System" as S
+
+'-Associations---------------------------------------------------------------------------------------------------------
+
+activate A
+
+A -> S: Enters weapon details
+activate S
+
+S -> A: Validates weapon details
+
+A -> S: Confirms weapon details
+
+S -> A: Displays confirmation message
+deactivate S
+
+'----------------------------------------------------------------------------------------------------------------------
+
+@enduml

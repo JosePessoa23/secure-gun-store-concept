@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide methods
+skinparam classAttributeIconSize 0
+
+package Weapons{
+class Weapon{
+-weaponID
+-name
+-price
+-description
+-image
+}
+}
+
+package Users{
+class Admin{
+-adminID
+-name
+-email
+-password
+}
+}
+
+Admin "1" -->"*" Weapon : adds >
+
+@enduml

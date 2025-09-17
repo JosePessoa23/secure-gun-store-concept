@@ -1,0 +1,297 @@
+
+> @locknload/source@0.0.0 lint
+> eslint './**/*.{ts,tsx}'
+
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/api/middlewares/attachCurrentUser.ts
+  30:5  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/api/middlewares/file.ts
+  3:7  warning  'storage' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/api/middlewares/isGuest.ts
+  10:47  warning  'decoded' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/api/rateLimiter/rateLimiter.ts
+  11:5   warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  13:42  warning  'next' is defined but never used       @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/api/routes/licenseRoute.ts
+   1:37  warning  'NextFunction' is defined but never used                                                                                                                            @typescript-eslint/no-unused-vars
+   2:8   warning  'multer' is defined but never used                                                                                                                                  @typescript-eslint/no-unused-vars
+  44:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/api/routes/orderRoute.ts
+   7:8   warning  'winston' is defined but never used    @typescript-eslint/no-unused-vars
+  32:25  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  35:37  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/api/routes/resetPasswordRoute.ts
+   7:8   warning  'winston' is defined but never used    @typescript-eslint/no-unused-vars
+  22:64  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  35:64  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  50:64  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/api/routes/userRoute.ts
+   7:8   warning  'winston' is defined but never used    @typescript-eslint/no-unused-vars
+  30:25  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  43:25  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  57:25  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  60:37  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  63:5   warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  67:5   warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  70:47  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/api/routes/weaponRoute.ts
+  24:25  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/app.ts
+  53:11  warning  Unsafe return of an `any` typed value                                                                                                                               @typescript-eslint/no-unsafe-return
+  84:1   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/controllers/licenseController.ts
+  21:5   warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+  51:67  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+  66:73  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+  81:74  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+  96:64  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/controllers/orderController.ts
+  19:55  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+  36:55  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/controllers/resetPasswordController.ts
+  29:5  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+  57:5  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+  83:5  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/controllers/userController.ts
+   19:52  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+   36:56  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+   53:56  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+   69:52  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+   89:54  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+  106:60  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+  123:60  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/controllers/weaponController.ts
+  20:56  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+  37:56  warning  'next' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/core/domain/events/IHandle.ts
+  1:26  warning  'IDomainEvent' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/core/domain/events/tests/mocks/services/mockPostToSocial.ts
+  16:27  warning  Avoid referencing unbound methods which may cause unintentional scoping of `this`.
+If your function does not access `this`, you can annotate it with `this: void`, or consider using an arrow function instead  @typescript-eslint/unbound-method
+  17:27  warning  Avoid referencing unbound methods which may cause unintentional scoping of `this`.
+If your function does not access `this`, you can annotate it with `this: void`, or consider using an arrow function instead  @typescript-eslint/unbound-method
+  24:32  warning  'event' is defined but never used                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  28:29  warning  'event' is defined but never used                                                                                                                                                                               @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/core/infra/BaseController.ts
+  15:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/core/infra/Mapper.ts
+  1:30  warning  'DomainEntityOrValueObject' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/domain/license/application.ts
+  28:5  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/domain/license/license.ts
+  25:7  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/domain/order/order.ts
+  35:5  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/domain/policies/orderPolicy.ts
+  2:8  warning  'UserRole' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/domain/user/user.ts
+  29:5  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/domain/user/userPassword.ts
+   7:8   warning  'fetch' is defined but never used   @typescript-eslint/no-unused-vars
+   8:13  warning  'crypto' is defined but never used  @typescript-eslint/no-unused-vars
+  42:34  warning  'reject' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/domain/weapon/weapons.ts
+  21:5  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/loaders/dependencyInjector.ts
+  6:3  warning  'mongoConnection' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/loaders/express.ts
+  53:7   warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  58:5   warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  60:27  warning  'next' is defined but never used       @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/loaders/index.ts
+    8:8  warning  'licenseSchema' is defined but never used                   @typescript-eslint/no-unused-vars
+  139:3  warning  Unexpected `await` of a non-Promise (non-"Thenable") value  @typescript-eslint/await-thenable
+  148:3  warning  Unexpected `await` of a non-Promise (non-"Thenable") value  @typescript-eslint/await-thenable
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/loaders/logger.ts
+   8:3  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  38:9  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+  57:7  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/mappers/ApplicationMapper.ts
+  33:3  warning  Static async method 'toDomain' has no 'await' expression  @typescript-eslint/require-await
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/mappers/LicenseMap.ts
+  22:5  warning  Static async method 'toDomain' has no 'await' expression  @typescript-eslint/require-await
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/mappers/OrderMap.ts
+  33:3  warning  Static async method 'toDomain' has no 'await' expression  @typescript-eslint/require-await
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/mappers/PasswordMap.ts
+  7:3  warning  Static async method 'toDomain' has no 'await' expression  @typescript-eslint/require-await
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/mappers/ResetPasswordTokenMap.ts
+  8:3  warning  Static async method 'toDomain' has no 'await' expression  @typescript-eslint/require-await
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/mappers/StatusTokenMap.ts
+  7:3  warning  Static async method 'toDomain' has no 'await' expression  @typescript-eslint/require-await
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/mappers/UserMap.ts
+   1:10  warning  'Container' is defined but never used                     @typescript-eslint/no-unused-vars
+  28:3   warning  Static async method 'toDomain' has no 'await' expression  @typescript-eslint/require-await
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/mappers/WeaponMap.ts
+  19:26  warning  Unexpected `await` of a non-Promise (non-"Thenable") value  @typescript-eslint/await-thenable
+  26:27  warning  Unexpected `await` of a non-Promise (non-"Thenable") value  @typescript-eslint/await-thenable
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/persistence/schemas/passwordSchema.ts
+  2:10  warning  'IResetPasswordTokenPersistence' is defined but never used  @typescript-eslint/no-unused-vars
+  4:9   warning  'Schema' is assigned a value but never used                 @typescript-eslint/no-unused-vars
+  4:17  warning  'model' is assigned a value but never used                  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/persistence/schemas/resetPasswordTokenSchema.ts
+  3:9   warning  'Schema' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  3:17  warning  'model' is assigned a value but never used   @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/persistence/schemas/statusTokenSchema.ts
+  4:9   warning  'Schema' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  4:17  warning  'model' is assigned a value but never used   @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/repos/applicationRepo.ts
+  41:15  warning  'updatedApplication' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/repos/orderRepo.ts
+  10:10  warning  'UserEmail' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/repos/resetPasswordRepo.ts
+  1:30  warning  'Inject' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/repos/userRepo.ts
+  12:10  warning  'SourceTextModule' is defined but never used  @typescript-eslint/no-unused-vars
+  63:5   warning  Unsafe return of an `any` typed value         @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/services/IRepos/IOrderRepo.ts
+  1:10  warning  'UserEmail' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/services/licenseService.ts
+    1:10  warning  'Inject' is defined but never used                                                                                                                                  @typescript-eslint/no-unused-vars
+  186:7   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  200:7   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/services/resetPasswordService.ts
+  1:10  warning  'Inject' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/services/userService.ts
+    1:19  warning  'Inject' is defined but never used     @typescript-eslint/no-unused-vars
+   12:8   warning  'IUserRepo' is defined but never used  @typescript-eslint/no-unused-vars
+  124:5   warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/services/weaponService.ts
+  1:19  warning  'Inject' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/utils/ParseUtils.ts
+  27:5  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/backend/src/utils/email/sendEmail.ts
+  12:3  warning  Unsafe return of an `any` typed value  @typescript-eslint/no-unsafe-return
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/app.module.ts
+  48:59  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/components/change-password/change-password.component.ts
+  40:8  warning  'res' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/components/check-status/check-status.component.ts
+  43:8  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/components/checkout/checkout.component.ts
+  74:9  warning  'response' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/components/create-weapon/create-weapon.component.ts
+   1:29  warning  'OnInit' is defined but never used  @typescript-eslint/no-unused-vars
+  31:27  warning  Forbidden non-null assertion        @typescript-eslint/no-non-null-assertion
+  40:7   warning  Forbidden non-null assertion        @typescript-eslint/no-non-null-assertion
+  66:24  warning  Forbidden non-null assertion        @typescript-eslint/no-non-null-assertion
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/components/login/login.component.ts
+   6:27  warning  'TuiDialogService' is defined but never used  @typescript-eslint/no-unused-vars
+  39:10  warning  'response' is defined but never used          @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/components/shopping-cart/shopping-cart.component.ts
+  3:10  warning  'Weapon' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/components/user-application-view/user-application-view.component.ts
+  69:8  warning  'data' is defined but never used   @typescript-eslint/no-unused-vars
+  76:8  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/components/user-dashboard/user-dashboard.component.ts
+   2:21  warning  'OnInit' is defined but never used                @typescript-eslint/no-unused-vars
+   8:10  warning  'ApplicationStatusDTO' is defined but never used  @typescript-eslint/no-unused-vars
+  61:15  warning  'reader' is assigned a value but never used       @typescript-eslint/no-unused-vars
+  72:17  warning  'response' is assigned a value but never used     @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/components/user-delete/user-delete.component.ts
+   2:21  warning  'OnInit' is defined but never used    @typescript-eslint/no-unused-vars
+  31:9   warning  'response' is defined but never used  @typescript-eslint/no-unused-vars
+  35:9   warning  'error' is defined but never used     @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/components/user-details/user-details.component.ts
+  88:7  warning  'response' is defined but never used  @typescript-eslint/no-unused-vars
+  91:7  warning  'error' is defined but never used     @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/components/weapon-card/weapon-card.component.ts
+  1:21  warning  'EventEmitter' is defined but never used  @typescript-eslint/no-unused-vars
+  1:42  warning  'Output' is defined but never used        @typescript-eslint/no-unused-vars
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/dto/applicationDTO.ts
+  6:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  7:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/services/licenseService.ts
+  36:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  44:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  49:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  54:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  59:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/services/orderService.ts
+  32:47  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/services/passwordResetService.ts
+   5:10  warning  'Weapon' is defined but never used        @typescript-eslint/no-unused-vars
+  22:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  31:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  39:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  41:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/services/userService.ts
+  32:58  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  36:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  67:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  70:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  77:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/vilels/isep/DESOFS/code/m1a_7/locknload/frontend/src/app/services/weaponService.ts
+  19:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  24:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 148 problems (0 errors, 148 warnings)
+

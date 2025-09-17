@@ -1,0 +1,40 @@
+<div class="conteudo-div">
+    <h1>Application Details for client {{application.name}}</h1>
+    <div class="label">
+      <label for="name">Name:</label>
+      <p>{{application.name}}</p>
+    </div>
+    <div class="label">
+      <label for="email">Email:</label>
+      <p>{{application.email}}</p>
+    </div>
+    <div class="label">
+      <label for="birthdate">BirthDate:</label>
+      <p>{{formatDate(application.birthDate)}}</p>
+    </div>
+    <div class="label">
+      <label for="address">Address:</label>
+      <p>{{application.address}}</p> 
+    </div>
+    <div class="labelButton">
+      <button (click)="downloadMedicalCertificate()">Download Medical Certificate
+      </button>
+    </div>
+   
+    <div class="labelButton">
+      <button (click)="downloadDocumentId()">Download ID Document
+      </button>
+    </div>
+    <div class="aprrove-buttons">
+      <button class="approve-button" (click)="approveApplication('Approve')">Approve
+      </button>
+      <button class="reject-button" (click)="approveApplication('Denied')">Reject
+      </button>
+    </div>
+  </div>
+  <div >
+  </div>
+<div>
+    
+</div>
+
