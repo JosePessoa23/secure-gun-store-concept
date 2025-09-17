@@ -4,6 +4,8 @@
 
 This project aims to develop a secure online platform for the purchase and sale of weapons. The system will facilitate interactions between three main roles: Admin, Client, and ERCA (Entity Regulating Gun Purchases). The system will manage aggregates such as Users, Weapons, and Orders to ensure secure transactions and regulatory compliance.
 
+![Website_example](documentation/image.png)
+
 ## Roles
 
 ### Admin
